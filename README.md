@@ -11,10 +11,10 @@ Created with React + Redux, Django + Django Rest Framework.
 5. python3 manage.py runserver  
 
 ### urls:
-1. To create a contact: http://199.116.235.221:8000/create/
-2. To view all contacts: http://199.116.235.221:8000/view/
-3. To update one contact by using the Primary Key: http://199.116.235.221:8000/update/pk/
-4. To Delete contact: http://199.116.235.221:8000/update/pk/delete
+1. To create a contact: http://199.116.235.221:8000/api/create/
+2. To view all contacts: http://199.116.235.221:8000/api/view/
+3. To update one contact by using the Primary Key: http://199.116.235.221:8000/api/update/pk/
+4. To Delete contact: http://199.116.235.221:8000/api/contact/pk/delete
 
 ### FrontEnd:
 1. npm install  
