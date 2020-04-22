@@ -37,7 +37,7 @@ class ContactUpdateAPIView(RetrieveUpdateAPIView):
     serializer_class = ContactSerializer
     queryset = Contact.objects.all()
 
-class ContactDeteleAPIView(DestroyAPIView):
+class ContactDeteleAPIView(RetrieveDestroyAPIView):
     serializer_class = ContactSerializer
     queryset = Contact.objects.all()
 
