@@ -38,8 +38,8 @@ function AppHeader() {
 
   // if header clicked, return to home page
   let handleIconOnClick = () => {
-    if (window.location.pathname !== '/home') {
-      history.push('/home')
+    if (window.location.pathname !== '/contacts') {
+      history.push('/contacts')
     }
   }
   // the following is the header logo

@@ -8,32 +8,7 @@ import connect from 'redux-connect-decorator'
 import { Form, Icon, Input, Button, Checkbox, Table } from 'antd';
 import { fetchContacts } from '../../actions/contactActions'
 import AppLayout from '../../layout';
-const data = [
-  {
-    key: '1',
-    name: 'John Brown',
-    age: 32,
-    address: 'New York No. 1 Lake Park',
-  },
-  {
-    key: '2',
-    name: 'Jim Green',
-    age: 42,
-    address: 'London No. 1 Lake Park',
-  },
-  {
-    key: '3',
-    name: 'Joe Black',
-    age: 32,
-    address: 'Sidney No. 1 Lake Park',
-  },
-  {
-    key: '4',
-    name: 'Jim Red',
-    age: 32,
-    address: 'London No. 2 Lake Park',
-  },
-];
+
 @connect((store) => {
   return {
     contacts: store.contact.contacts,
@@ -43,6 +18,7 @@ class Home extends React.Component {
   state = {
     filteredInfo: null,
     sortedInfo: null,
+    newData:[],
   };
 
   handleChange = (pagination, filters, sorter) => {
@@ -63,7 +39,40 @@ class Home extends React.Component {
   };
 
   render() {
-    console.log(this.props.contacts);
+    var data = [];
+    var firstNameFilter = [];
+    var lastNameFilter = [];
+    var emailFilter = [];
+
+    for (var i = 0; i<this.props.contacts.length; i++){
+      let obj = {};
+      let firstNameObj = {}
+      let lastNameObj = {}
+      let emailObj = {}
+      firstNameObj.text = this.props.contacts[i].firstName;
+      firstNameObj.value = this.props.contacts[i].firstName;
+      firstNameFilter.push(firstNameObj)
+      lastNameObj.text = this.props.contacts[i].lastName;
+      lastNameObj.value = this.props.contacts[i].lastName;
+      lastNameFilter.push(lastNameObj)
+      emailObj.text = this.props.contacts[i].email;
+      emailObj.value = this.props.contacts[i].email;
+      emailFilter.push(emailObj)
+      obj.key = this.props.contacts[i].id;  // event id
+      obj.firstName = this.props.contacts[i].firstName;
+      obj.lastName = this.props.contacts[i].lastName;
+      obj.email = this.props.contacts[i].email;
+      obj.phone = this.props.contacts[i].phone;
+      obj.photo = <img
+          style={{
+            maxHeight: '50px',
+            maxWeight: '50px'
+          }}
+          alt=""
+          src={this.props.contacts[i].photo}
+        />;
+      data.push(obj);
+    }
     let { sortedInfo, filteredInfo } = this.state;
     sortedInfo = sortedInfo || {};
     filteredInfo = filteredInfo || {};
@@ -73,10 +82,7 @@ class Home extends React.Component {
         title: 'First Name',
         dataIndex: 'firstName',
         key: 'firstName',
-        filters: [
-          { text: 'Joe', value: 'Joe' },
-          { text: 'Jim', value: 'Jim' },
-        ],
+        filters: firstNameFilter,
         filteredValue: filteredInfo.firstName || null,
         onFilter: (value, record) => record.firstName.includes(value),
         sorter: (a, b) => stringSorter(a, b, 'firstName'),
@@ -87,10 +93,7 @@ class Home extends React.Component {
         title: 'Last Name',
         dataIndex: 'lastName',
         key: 'lastName',
-        filters: [
-          { text: 'Joe', value: 'Joe' },
-          { text: 'Jim', value: 'Jim' },
-        ],
+        filters: lastNameFilter,
         filteredValue: filteredInfo.lastName || null,
         onFilter: (value, record) => record.lastName.includes(value),
         sorter: (a, b) => stringSorter(a, b, 'lastName'),
@@ -101,10 +104,7 @@ class Home extends React.Component {
         title: 'Email',
         dataIndex: 'email',
         key: 'email',
-        filters: [
-          { text: 'Joe', value: 'Joe' },
-          { text: 'Jim', value: 'Jim' },
-        ],
+        filters: emailFilter,
         filteredValue: filteredInfo.email || null,
         onFilter: (value, record) => record.email.includes(value),
         sorter: (a, b) => stringSorter(a, b, 'email'),
@@ -129,10 +129,11 @@ class Home extends React.Component {
     return (
       <AppLayout style={{overflow: "auto"}} className="layout">
         <div>
+          <br></br>
           <div className="table-operations">
             <Button onClick={this.clearAll}>Clear filters and sorters</Button>
           </div>
-          <Table columns={columns} dataSource={this.props.contacts} onChange={this.handleChange} />
+          <Table columns={columns} dataSource={data} onChange={this.handleChange} />
         </div>
       </AppLayout>
     );
