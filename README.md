@@ -10,7 +10,7 @@ Created with React + Redux, Django + Django Rest Framework.
 4. python3 manage.py migrate
 5. python3 manage.py runserver  
 
-# urls:
+### urls:
 1. To create a contact: http://199.116.235.221:8000/create/
 2. To view all contacts: http://199.116.235.221:8000/view/
 3. To update one contact by using the Primary Key: http://199.116.235.221:8000/update/pk/
@@ -21,7 +21,8 @@ Created with React + Redux, Django + Django Rest Framework.
 2. npm start  
 
 ## On server:  
-### server host: http://199.116.235.221:3000/
+### server host: http://199.116.235.221:3000/contacts
+### if the url could not be found, it will have 404 not found page.
 ### start FrontEnd:
     -  npm run build  
     -  serve -s build -l 3000  
