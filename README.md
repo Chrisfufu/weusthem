@@ -22,7 +22,7 @@ Created with React + Redux, Django + Django Rest Framework.
 
 ## On server:  
 ### server host: http://199.116.235.221:3000/contacts
-### if the url could not be found, it will have 404 not found page.
+### if the url could not be found, it will have 404 not found page.   
 ### start FrontEnd:
     -  npm run build  
     -  serve -s build -l 3000  
