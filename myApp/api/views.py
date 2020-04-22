@@ -32,6 +32,15 @@ class ContactCreateAPIView(CreateAPIView):
 class ContactListAPIView(ListAPIView):
     serializer_class = ContactSerializer
     queryset = Contact.objects.all()
+
+class ContactUpdateAPIView(RetrieveUpdateAPIView):
+    serializer_class = ContactSerializer
+    queryset = Contact.objects.all()
+
+class ContactDeteleAPIView(DestroyAPIView):
+    serializer_class = ContactSerializer
+    queryset = Contact.objects.all()
+
 #
 # class UserResetPasswordAPIView(RetrieveUpdateAPIView):
 #     serializer_class = ChangePasswordSerializer
