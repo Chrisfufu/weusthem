@@ -7,7 +7,8 @@ Created with React + Redux, Django + Django Rest Framework.
 1. virtualenv env  
 2. env\Scripts\activate (on Mac: source env/bin/activate)   
 3. pip3 install -r requirements.txt  
-4. python3 manage.py runserver  
+4. python3 manage.py migrate
+5. python3 manage.py runserver  
 
 # urls:
 1. To create a contact: http://199.116.235.221:8000/create/
